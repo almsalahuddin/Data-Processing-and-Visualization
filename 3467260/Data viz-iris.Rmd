@@ -1,0 +1,77 @@
+---
+title: "Data viz-iris"
+author: "A L M Salahuddin"
+date: "1/20/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rvest)
+library(tidyverse)
+df<-read.csv("Iris.csv")
+
+```
+
+First, I will load the dataset.
+```{r}
+df <- read.csv('Iris.csv')
+cols <- c('SepalLenth','SepalWidth','PedalLength','PedalWidth','Class')
+colnames(df)<-cols
+df%>%head
+```
+```{r}
+summary("Iris.csv")
+```
+
+Now, I will get the summary for SepalLenth.
+
+```{r}
+summary(df$SepalLenth)
+```
+ 
+Next find outh the mean for SepalLenth.
+
+```{r}
+mean(df$SepalLenth)
+```
+
+
+# Box plots
+
+I will visualize box plot for the class data.
+
+```{r}
+boxplot(df$Class)
+```
+
+# Histogram
+
+I will visualize histogram plot for the PedalLength data.
+
+```{r}
+ggplot(df, aes(x= PedalLength)) +
+  geom_histogram(bin=10)
+```
+
+# Box plot
+
+I will visualize another box plot for the PedalLength data.
+
+```{r}
+boxplot(df$PedalLength)
+```
+
+# violin plot
+
+Next, I will visualize another violin plot for the PedalLength data.
+
+```{r}
+ggplot(df, aes(x=Class, y=PedalLength)) + 
+  geom_violin(trim=FALSE)
+```
+
+```{r}
+sd(df$PedalLength)
+```
+
